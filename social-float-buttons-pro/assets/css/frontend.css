@@ -1,0 +1,191 @@
+/* ─────────────────────────────────────
+   Social Float Buttons Pro - Frontend Styles
+   ───────────────────────────────────── */
+
+.sfbp-container {
+  position: fixed;
+  bottom: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.sfbp-container[data-position="right"] {
+  right: 24px;
+}
+
+.sfbp-container[data-position="left"] {
+  left: 24px;
+}
+
+/* Popup opens UPWARD */
+.sfbp-popup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  pointer-events: none;
+  order: -1;
+}
+
+.sfbp-popup.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.sfbp-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.sfbp-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.sfbp-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+.sfbp-icon::after {
+  content: attr(aria-label);
+  position: absolute;
+  right: 60px;
+  background: #1e293b;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  pointer-events: none;
+}
+
+[data-position="left"] .sfbp-icon::after {
+  right: auto;
+  left: 60px;
+}
+
+.sfbp-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sfbp-toggle-btn {
+  width: auto;
+  min-width: 52px;
+  height: 52px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-family: inherit;
+  position: relative;
+  z-index: 2;
+}
+
+.sfbp-toggle-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+}
+
+.sfbp-btn-text {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sfbp-btn-icon {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.sfbp-toggle-btn.active .sfbp-btn-icon {
+  transform: rotate(45deg);
+}
+
+@keyframes sfbp-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25), 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  50% {
+    box-shadow: 0 4px 18px rgba(0,0,0,0.25), 0 0 0 14px rgba(37, 211, 102, 0);
+  }
+}
+
+.sfbp-toggle-btn.pulse {
+  animation: sfbp-pulse 2.5s infinite;
+}
+
+@media (max-width: 768px) {
+  .sfbp-container {
+    bottom: 16px;
+  }
+  
+  .sfbp-container[data-position="right"] {
+    right: 16px;
+  }
+  
+  .sfbp-container[data-position="left"] {
+    left: 16px;
+  }
+  
+  .sfbp-icon {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .sfbp-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+  
+  .sfbp-toggle-btn {
+    height: 46px;
+    padding: 0 16px;
+  }
+  
+  .sfbp-btn-text {
+    font-size: 13px;
+  }
+  
+  .sfbp-icon::after {
+    display: none;
+  }
+}
+
+@media print {
+  .sfbp-container {
+    display: none !important;
+  }
+}
